@@ -18,20 +18,15 @@ pipeline {
         
         stage("compile Project"){
             steps {
-                 sh 'mvn compile -X -e'
+                 sh 'mvn compile'
                   echo 'compile stage done'
             }
         }
         
-       stage("Build") { 
-            steps { 
-                echo  'building the application...' 
-            }
-        }
-        stage("Test"){
+       stage("maven tests"){
             steps {
-                echo 'testing the application...'
-                
+                 sh 'mvn test'
+                echo 'unit tests stage done'
             }
         }
         stage('Deploy') {

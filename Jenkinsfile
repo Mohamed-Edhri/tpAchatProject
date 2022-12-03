@@ -29,9 +29,33 @@ pipeline {
                 echo 'unit tests stage done'
             }
         }
-        stage('Deploy') {
+        
+        stage("SonarQube Analysis") {
+          
+           steps {
+            withSonarQubeEnv('SonarQube') 
+            {
+                  sh ''' 
+                        mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=cidevops 
+                        
+                        '''
+                  echo 'sonar static analysis done'
+           }
+           }
+         }
+        
+          stage("maven package") {
             steps {
-                echo 'deploying the application...'
+                script {
+                    sh "mvn package -DskipTests=true"
+                }
+            }
+        }
+        
+        stage('Publish to Nexus Repo') {
+            steps {
+                echo 'publishing to nexus repo...'
             }
         }
    

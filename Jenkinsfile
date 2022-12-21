@@ -9,12 +9,12 @@ pipeline {
             }
         }
         
-         stage ('MVN clean') {
+         stage ('maven clean') {
       steps {
         sh 'mvn clean -e'
         echo 'Build stage done'
       }
-    }
+  }
         
       
    

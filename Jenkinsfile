@@ -18,7 +18,7 @@ pipeline {
         
         stage ('maven clean') {
             steps {
-        sh 'mvn clean -e'
+        sh 'mvn clean'
         echo 'Build stage done'
            }
       }

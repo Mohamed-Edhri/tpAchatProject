@@ -4,7 +4,7 @@ pipeline {
          JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
          M2_HOME="/opt/maven"
          MAVEN_HOME="/opt/maven"
-         PATH="${M2_HOME}/bin:${PATH}"
+         PATH="$PATH:/opt/maven/bin:"
 
      }
     

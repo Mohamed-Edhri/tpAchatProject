@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-          label "master"
-          }
+    agent any
      environment {
          JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
          M2_HOME="/opt/maven"
@@ -17,6 +15,13 @@ pipeline {
                 git credentialsId: 'github' ,  url: 'https://github.com/Mohamed-Edhri/tpAchatProject.git'
                   }
         }
+        
+        stage ('maven version') {
+            steps {
+                 sh 'mvn -version'
+                 echo 'maven version checked'
+                 }
+       }
         
         stage ('maven clean') {
             steps {

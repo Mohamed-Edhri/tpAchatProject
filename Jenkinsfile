@@ -15,14 +15,7 @@ pipeline {
                 git credentialsId: 'github' ,  url: 'https://github.com/Mohamed-Edhri/tpAchatProject.git'
                   }
         }
-        
-        stage ('maven version') {
-            steps {
-                 sh 'mvn -version'
-                 echo 'maven version checked'
-                 }
-       }
-        
+              
         stage ('maven clean') {
             steps {
                  sh 'mvn clean -e'

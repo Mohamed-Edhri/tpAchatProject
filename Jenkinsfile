@@ -1,8 +1,6 @@
 pipeline {
     agent any
-     tools {
-        maven 'mvn'
-    }
+   
      environment {
          JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
          M2_HOME="/opt/maven"

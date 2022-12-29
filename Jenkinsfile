@@ -1,7 +1,7 @@
 pipeline {
     agent any
      tools {
-        maven 'maven-3.8.6' 
+        maven 'mvn'
     }
      environment {
          JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"

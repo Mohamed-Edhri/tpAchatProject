@@ -1,5 +1,9 @@
 pipeline {
-    agent any   
+    agent any 
+    tools{
+        tool name: 'mvn', type: 'maven'
+    }
+    
     stages {
         
         stage("Checkout GIT"){

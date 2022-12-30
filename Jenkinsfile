@@ -33,13 +33,35 @@ pipeline {
                   echo 'unit tests stage done'
             }
         }
-         
+        
+        stage("SonarQube Analysis") {
+          
+           steps {
+            withSonarQubeEnv('SonarQube') 
+            {
+                  sh ''' 
+                        mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=cidevops 
+                        
+                        '''
+                  echo 'sonar static analysis done'
+           }
+           }
+         }
+                
         stage('maven package') {
              steps {
                   sh 'mvn package'
                   echo 'package done'
           }
        }
+        
+       stage("maven package") {
+            steps {
+                script {
+                    echo "pulsihed to nexus done"
+                }
+        }
         
         
        

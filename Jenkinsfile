@@ -22,21 +22,21 @@ pipeline {
         
         stage("compile Project"){
         steps {
-          //  sh 'mvn compile -X -e'
+            sh 'mvn compile -X -e'
             echo 'compile stage done'
             }
         }
         
         stage("unit test"){
             steps {
-              // sh 'mvn test'
+                  sh 'mvn test'
                   echo 'unit tests stage done'
             }
         }
          
         stage('maven package') {
              steps {
-             // sh 'mvn package'
+                  sh 'mvn package'
                   echo 'package done'
           }
        }

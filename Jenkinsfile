@@ -64,14 +64,7 @@ pipeline {
           }
        }
         
-       stage("maven package") {
-            steps {
-                script {
-                    echo "pulsihed to nexus done"
-                       }
-                  }
-     }
-        
+     
      
    
 

@@ -51,6 +51,13 @@ pipeline {
           }
        }
         
+         stage("Publish to Nexus Repository Manager") {
+            steps {
+                script {
+                    echo 'artifactid uploded'
+                }
+            }
+         }
      
      
     }

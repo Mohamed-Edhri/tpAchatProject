@@ -57,7 +57,7 @@ pipeline {
             steps {
                 script {
   
-   nexusPublisher nexusInstanceId: 'maven-releases', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\spring-boot-maven-1.0.jar']], mavenCoordinate: [artifactId: 'spring-boot-maven', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0']]]
+   nexusPublisher nexusInstanceId: 'maven-releases', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\tpAchatProject-1.0.jar']], mavenCoordinate: [artifactId: 'spring-boot-maven', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0']]]
                   }
                    }
 }

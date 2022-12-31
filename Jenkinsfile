@@ -51,14 +51,20 @@ pipeline {
           }
        }
         
+         //  -------------- Upload Artifact to nexus ---------------
+        
          stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
-                    echo 'artifactid uploded'
-                }
-            }
-         }
-     
+  
+   nexusPublisher nexusInstanceId: 'maven-releases', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\spring-boot-maven-1.0.jar']], mavenCoordinate: [artifactId: 'spring-boot-maven', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0']]]
+                  }
+                   }
+}
+        
+        //  ---------------- Upload Artifact to nexus -------------
+        
+        
      
     }
 }

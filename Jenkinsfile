@@ -42,20 +42,7 @@ pipeline {
             }
         }
         
-        stage("SonarQube Analysis") {
-          
-           steps {
-            withSonarQubeEnv('SonarQube') 
-            {
-                //  sh ''' 
-                       // mvn clean verify sonar:sonar \
-                      //  -Dsonar.projectKey=cidevops 
-                        
-                     //   '''
-                  echo 'sonar static analysis done'
-           }
-           }
-         }
+      
                         
         stage('maven package') {
              steps {

@@ -42,6 +42,15 @@ pipeline {
             }
         }
         
+        stage("SonarQube Analysis") {
+          
+           steps {
+            withSonarQubeEnv('Sonar9') 
+            {
+                sh './mvnw clean org.sonarsource.scanner.maven:sonar'
+           }
+           }
+         }
       
                         
         stage('maven package') {

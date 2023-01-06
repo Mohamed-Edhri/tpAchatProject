@@ -45,7 +45,7 @@ pipeline {
          stage("SonarQube Analysis") {
           
            steps {
-            withSonarQubeEnv('SonarQube') 
+            withSonarQubeEnv('SonarV9.7.1') 
             {
                   sh ''' 
                      mvn clean verify sonar:esprit \

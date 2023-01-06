@@ -11,6 +11,10 @@ pipeline {
         NEXUS_URL = "192.168.1.90:8081"
         NEXUS_REPOSITORY = "maven-releases"
         NEXUS_CREDENTIAL_ID = "nexus3"
+        imageName="myWebApp"
+        registryCredentials='nexus'
+	    registry ="http://192.168.1.90:8081/"
+        dokerImage=''
     }
     
     stages {
@@ -64,18 +68,31 @@ pipeline {
           }
        }
         
+        
+        stage("docker build") {
+                       steps{
+                         script {
+                            //dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                            dockerImage = docker.build imageName
+                       }
+                 }
+       }
+        
+        
+        
          //  -------------- Upload Artifact to nexus ---------------
         
-         stage("Publish to Nexus Repository Manager") {
-            steps {
-                script {
-  
-   nexusPublisher nexusInstanceId: 'maven-releases', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\tpAchatProject-1.0.jar']], mavenCoordinate: [artifactId: 'spring-boot-maven', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0']]]
-                  }
-                   }
-}
+         stage('Uploading to Nexus') {
+     steps{  
+         script {
+             docker.withRegistry( 'http://'+registry, registryCredentials ) {
+             dockerImage.push('latest')
+          }
+        }
+      }
+    }
         
-        //  ---------------- Upload Artifact to nexus -------------
+        
         
         
      

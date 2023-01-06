@@ -42,15 +42,13 @@ pipeline {
             }
         }
         
-        stage("SonarQube Analysis") {
-          
-           steps {
-            withSonarQubeEnv('Sonar9') 
-            {
-                sh ' mvnw clean org.sonarsource.scanner.maven:admin'
-           }
-           }
-         }
+         stage('SonarQube Analysis') {
+               //def mvn = tool 'Default Maven';
+               withSonarQubeEnv('SonarQubeScannerV9.7.1') {
+               sh "${mvn}/bin/mvn clean verify sonar:sonar"
+               echo 'sonar static analysis done'
+               }
+       }
       
                         
         stage('maven package') {

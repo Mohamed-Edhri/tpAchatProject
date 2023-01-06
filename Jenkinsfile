@@ -47,7 +47,7 @@ pipeline {
            steps {
             withSonarQubeEnv('Sonar9') 
             {
-                sh ' chmod +x ./mvnw clean org.sonarsource.scanner.maven:sonar'
+                sh ' mvnw clean org.sonarsource.scanner.maven:admin'
            }
            }
          }

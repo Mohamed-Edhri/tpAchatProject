@@ -6,14 +6,9 @@ pipeline {
     }
     
     environment {
-        NEXUS_VERSION = "nexus3"
-        NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "192.168.1.90:8081"
-        NEXUS_REPOSITORY = "maven-releases"
-        NEXUS_CREDENTIAL_ID = "nexus3"
-        imageName="myWebApp"
-        registryCredentials='nexus'
-	    registry ="http://192.168.1.90:8081/"
+        imageName="tpAchatProject"
+        registryCredentials='nexus-credentials'
+	registry ="http://192.168.1.90:8081/"
         dokerImage=''
     }
     

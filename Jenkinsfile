@@ -48,7 +48,7 @@ pipeline {
             withSonarQubeEnv('SonarV9.7.1') 
             {
                   sh ''' 
-                     mvn clean verify sonar:esprit \
+                     mvn clean verify sonar:sonar \
                      -Dsonar.projectKey=devops-project
                   '''
                   echo 'sonar static analysis done'

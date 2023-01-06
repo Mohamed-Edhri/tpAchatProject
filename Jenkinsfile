@@ -42,14 +42,18 @@ pipeline {
             }
         }
         
-         stage('SonarQube Analysis') {
-               //def mvn = tool 'Default Maven';
-             steps {
-               withSonarQubeEnv('SonarQubeScannerV9.7.1') {
-               sh "${mvn}/bin/mvn clean verify sonar:sonar"
-               echo 'sonar static analysis done'
-               }
-            }
+         stage("SonarQube Analysis") {
+          
+           steps {
+            withSonarQubeEnv('SonarQube') 
+            {
+                  sh ''' 
+                     mvn clean verify sonar:sonar \
+                     -Dsonar.projectKey=devops-project
+                  '''
+                  echo 'sonar static analysis done'
+           }
+           }
          }
       
                         

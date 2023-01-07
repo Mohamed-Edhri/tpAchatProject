@@ -8,7 +8,7 @@ pipeline {
     environment {
         imageName="backend-app"
         registryCredentials='nexus'
-	registry ="http://192.168.1.90:8081/repository/my-jar-repo/"
+	registry ="/repository/my-jar-repo/"
         dokerImage=''
     }
     

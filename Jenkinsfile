@@ -74,21 +74,15 @@ pipeline {
         
                
          stage("Nexus Upload") {
-     steps{  
-         script {
-             nexusPublisher nexusInstanceId: 'my-jar-repo', 
+             steps{  
+                 script {
+                      nexusPublisher nexusInstanceId: 'my-jar-repo', 
 		     nexusRepositoryId: 'my-jar-repo', 
 		     packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\spring-boot-maven-1.0.jar']], 
-				 mavenCoordinate: [artifactId: 'spring-boot-maven', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0.0']]]
-                 
-          }
+				 mavenCoordinate: [artifactId: 'spring-boot-maven', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0.0']]]  
+                      }
+                 }
         }
-      }
-    }
-        
-        
-        
-        
-     
-    }
+	    
+    }  
 }

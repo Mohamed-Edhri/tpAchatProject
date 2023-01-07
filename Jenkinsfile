@@ -60,7 +60,6 @@ pipeline {
         stage("Docker Build") {
                        steps{
                          script {
-                            //dockerImage = docker.build registry + ":$BUILD_NUMBER"
                             dockerImage = docker.build imageName
                        }
                  }
@@ -70,8 +69,10 @@ pipeline {
          stage("Nexus Upload") {
      steps{  
          script {
-             docker.withRegistry( 'http://'+registry, registryCredentials ) {
-             dockerImage.push('latest')
+             nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: '', 
+		     packages: [[$class: 'MavenPackage',
+				 mavenAssetList: [[classifier: '', extension: '', filePath: 'http://192.168.1.90:8081/#admin/repository/repositories:my-jar-repo']],
+				 mavenCoordinate: [artifactId: 'spring-boot-devtools', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0.0']]]
           }
         }
       }

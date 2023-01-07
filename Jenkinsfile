@@ -6,7 +6,7 @@ pipeline {
     }
     
     environment {
-        imageName="tpAchatProject"
+        imageName="backend-app"
         registryCredentials='nexus-credentials'
 	registry ="http://192.168.1.90:8081/"
         dokerImage=''

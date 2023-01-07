@@ -10,7 +10,7 @@ pipeline {
 	NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "192.168.1.90:8081"
-        NEXUS_REPOSITORY = "/repository/my-jar-repo/"
+        NEXUS_REPOSITORY = "my-jar-repo/"
         NEXUS_CREDENTIAL_ID = "nexus"
         imageName="backend-app"
         dokerImage=''
@@ -59,6 +59,8 @@ pipeline {
            }
            }
          }
+	    
+	 
       
             
         stage("Docker Build") {
@@ -68,15 +70,17 @@ pipeline {
                        }
                  }
        }
+	    
         
                
          stage("Nexus Upload") {
      steps{  
          script {
-             nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: '', 
-		     packages: [[$class: 'MavenPackage',
-				 mavenAssetList: [[classifier: '', extension: '', filePath: 'http://192.168.1.90:8081/#admin/repository/repositories:my-jar-repo']],
-				 mavenCoordinate: [artifactId: 'spring-boot-devtools', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0.0']]]
+             nexusPublisher nexusInstanceId: 'my-jar-repo', 
+		     nexusRepositoryId: 'my-jar-repo', 
+		     packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\spring-boot-maven-1.0.jar']], 
+				 mavenCoordinate: [artifactId: 'spring-boot-maven', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0.0']]]
+                 
           }
         }
       }

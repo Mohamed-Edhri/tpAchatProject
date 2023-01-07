@@ -10,7 +10,7 @@ pipeline {
 	NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "192.168.1.90:8081"
-        NEXUS_REPOSITORY = "my-jar-repo"
+        NEXUS_REPOSITORY = "/repository/my-jar-repo/"
         NEXUS_CREDENTIAL_ID = "nexus"
         imageName="backend-app"
         dokerImage=''

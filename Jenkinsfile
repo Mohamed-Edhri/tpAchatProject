@@ -20,11 +20,7 @@ pipeline {
                   }
         }
 	 
-	stage('Initialize'){
-        def dockerHome = tool 'docker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-       }
-              
+	             
         stage ('maven clean') {
             steps {
                  sh 'mvn clean -e'

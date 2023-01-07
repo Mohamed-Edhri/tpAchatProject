@@ -10,7 +10,7 @@ pipeline {
 	NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "192.168.1.90:8081"
-        NEXUS_REPOSITORY = "my-jar-repo/"
+        NEXUS_REPOSITORY = "my-jar-repo"
         NEXUS_CREDENTIAL_ID = "nexus"
         imageName="backend-app"
         dokerImage=''
@@ -73,10 +73,10 @@ pipeline {
 	    
         
                
-         stage("Nexus Upload") {
+         stage("Nexus Publisher") {
              steps{  
                  script {
-                      nexusPublisher nexusInstanceId: 'my-jar-repo', 
+                      nexusPublisher nexusInstanceId: 'nexus', 
 		     nexusRepositoryId: 'my-jar-repo', 
 		     packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\spring-boot-maven-1.0.jar']], 
 				 mavenCoordinate: [artifactId: 'spring-boot-maven', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0.0']]]  

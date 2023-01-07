@@ -7,7 +7,7 @@ pipeline {
     
     environment {
 	    
-	NEXUS_VERSION = "nexus3"
+	NEXUS_VERSION = "nexus2"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "192.168.1.90:8081"
         NEXUS_REPOSITORY = "my-jar-repo"

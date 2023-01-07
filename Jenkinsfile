@@ -14,28 +14,28 @@ pipeline {
     
     stages {
         
-        stage("Checkout GIT"){
+        stage("GIT Cloning"){
             steps {
                 git credentialsId: 'github' ,  url: 'https://github.com/Mohamed-Edhri/tpAchatProject.git'
                   }
         }
 	 
 	             
-        stage ('maven clean') {
+        stage ("MVN Clean") {
             steps {
                  sh 'mvn clean -e'
                  echo 'Build stage done'
                  }
        }
         
-        stage("compile Project"){
+        stage("MVN Compile"){
         steps {
             sh 'mvn compile -X -e'
             echo 'compile stage done'
             }
         }
         
-        stage("unit test"){
+        stage("Unit Test"){
             steps {
                   sh 'mvn test'
                   echo 'unit tests stage done'
@@ -56,16 +56,8 @@ pipeline {
            }
          }
       
-                        
-        stage('maven package') {
-             steps {
-                  sh 'mvn package'
-                  echo 'package done'
-          }
-       }
-        
-        
-        stage("docker build") {
+            
+        stage("Docker Build") {
                        steps{
                          script {
                             //dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -74,11 +66,8 @@ pipeline {
                  }
        }
         
-        
-        
-         //  -------------- Upload Artifact to nexus ---------------
-        
-         stage('Uploading to Nexus') {
+               
+         stage("Nexus Upload") {
      steps{  
          script {
              docker.withRegistry( 'http://'+registry, registryCredentials ) {

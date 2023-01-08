@@ -76,7 +76,7 @@ pipeline {
          stage("Nexus Publisher") {
              steps{  
                  script {
-                     nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: 'backend-app', type: 'jar']], 
+                     nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: ''tpAchatProject-1.0.jar', type: 'jar']], 
 			     credentialsId: 'nexus', 
 			     groupId: 'com.esprit.examen', 
 			     nexusUrl: '192.168.1.90:8081', 

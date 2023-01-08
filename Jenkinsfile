@@ -76,11 +76,14 @@ pipeline {
          stage("Nexus Publisher") {
              steps{  
                  script {
-                      nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-maven', classifier: '', file: '/target/tpAchatProject-1.0.jar', type: 'jar']],
-			      credentialsId: 'nexus', groupId: 'org.springframework.boot', 
-			      nexusUrl: 'http://192.168.1.90:8081', 
-			      nexusVersion: 'nexus2', protocol: 'http', 
-			      repository: 'maven-releases', version: '1.0.0'  
+                     nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-maven', classifier: '', file: 'tpAchatProject-1.0.jar', type: 'jar']], 
+			     credentialsId: 'nexus', 
+			     groupId: 'org.springframework.boot', 
+			     nexusUrl: '192.168.1.90:8081', 
+			     nexusVersion: 'nexus3', 
+			     protocol: 'http', 
+			     repository: 'maven-releases', 
+			     version: '1.0.0'
                       }
                  }
         }

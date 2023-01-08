@@ -72,10 +72,10 @@ pipeline {
        }
 	    
 	 
-	 stage("Publish to Nexus Repository Manager") {
+	 stage("Publish to Nexus") {
             steps {
                 script {
-                       nexusPublisher nexusInstanceId: 'maven-releases', nexusRepositoryId: '', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\']], mavenCoordinate: [artifactId: 'spring-boot-maven-plugin', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0.1']]]
+                       nexusPublisher nexusInstanceId: 'maven-releases', nexusRepositoryId: '', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\']], mavenCoordinate: [artifactId: 'spring-boot-maven-plugin', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0']]]
                        }
                    }
           }

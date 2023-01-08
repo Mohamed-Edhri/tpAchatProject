@@ -12,6 +12,8 @@ pipeline {
         NEXUS_URL = "192.168.1.90:8081"
         NEXUS_REPOSITORY = "maven-snapshots"
         NEXUS_CREDENTIAL_ID = "nexus"
+	    registry="mimo20222/edhri2023_docker_hub_repo"
+        registryCredential='docker-hub-id'
         imageName="webapp"
         dokerImage=''
     }
@@ -71,15 +73,25 @@ pipeline {
                  }
        }
 	    
-	 
-	 stage("Publish to Nexus") {
-            steps {
-                script {
+	    stage(" DockerHub Push ") {
+              steps{
+                 script {
+                 docker.withRegistry( '', registryCredential ) 
+				        {
+                          dockerImage.push()
+                        }
+                }
+             }
+        }
+
+	 //stage("Publish to Nexus") {
+         //   steps {
+           //     script {
                        //nexusPublisher nexusInstanceId: 'maven-releases', nexusRepositoryId: '', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\tpAchatProject-1.0.jar']], mavenCoordinate: [artifactId: 'spring-boot-maven-plugin', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0']]]
-                      nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-maven-plugin', classifier: '', file: 'target/tpAchatProject-1.0.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'org.springframework.boot', nexusUrl: '192.168.1.90:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0'
-		       }
-                   }
-          }
+          //            nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-maven-plugin', classifier: '', file: 'target/tpAchatProject-1.0.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'org.springframework.boot', nexusUrl: '192.168.1.90:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0'
+		  //     }
+       //            }
+      //    }
 	    
         
                
@@ -87,3 +99,4 @@ pipeline {
 	    
     }  
 }
+

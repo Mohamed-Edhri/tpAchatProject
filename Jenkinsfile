@@ -76,12 +76,12 @@ pipeline {
          stage("Nexus Publisher") {
              steps{  
                  script {
-                     nexusPublisher nexusInstanceId: 'nexus',
+                     nexusPublisher nexusInstanceId: 'maven-releases',
 			     nexusRepositoryId: 'maven-releases', 
 			     packages: [[$class: 'MavenPackage', 
 					 mavenAssetList: [], 
-					 mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]], 
-			     tagName: 'webapp'
+					 mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]]
+			     
                       }
                  }
         }

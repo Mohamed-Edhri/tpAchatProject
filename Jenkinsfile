@@ -12,7 +12,7 @@ pipeline {
         NEXUS_URL = "192.168.1.90:8081"
         NEXUS_REPOSITORY = "maven-releases"
         NEXUS_CREDENTIAL_ID = "nexus"
-        imageName="backend-app"
+        imageName="tpAchatProject"
         dokerImage=''
     }
     
@@ -81,7 +81,7 @@ pipeline {
 			     packages: [[$class: 'MavenPackage', 
 					 mavenAssetList: [], 
 					 mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]], 
-			     tagName: 'backend-app'
+			     tagName: 'tpAchatProject'
                       }
                  }
         }

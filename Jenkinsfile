@@ -7,7 +7,7 @@ pipeline {
     
     environment {
 	    
-	NEXUS_VERSION = "nexus2"
+	NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "192.168.1.90:8081"
         NEXUS_REPOSITORY = "maven-releases"
@@ -76,14 +76,14 @@ pipeline {
          stage("Nexus Publisher") {
              steps{  
                  script {
-                     nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-maven', classifier: '', file: 'tpAchatProject-1.0.jar', type: 'jar']], 
+                     nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: 'tpAchatProject-1.0.jar', type: 'jar']], 
 			     credentialsId: 'nexus', 
-			     groupId: 'org.springframework.boot', 
+			     groupId: 'com.esprit.examen', 
 			     nexusUrl: '192.168.1.90:8081', 
 			     nexusVersion: 'nexus3', 
 			     protocol: 'http', 
 			     repository: 'maven-releases', 
-			     version: '1.0.0'
+			     version: '1.0'
                       }
                  }
         }

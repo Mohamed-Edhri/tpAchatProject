@@ -76,14 +76,12 @@ pipeline {
          stage("Nexus Publisher") {
              steps{  
                  script {
-                     nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: 'tpAchatProject-1.0.jar', type: 'jar']], 
-			     credentialsId: 'nexus', 
-			     groupId: 'com.esprit.examen', 
-			     nexusUrl: '192.168.1.90:8081', 
-			     nexusVersion: 'nexus3', 
-			     protocol: 'http', 
-			     repository: 'maven-releases', 
-			     version: '1.0'
+                     nexusPublisher nexusInstanceId: 'maven-releases',
+			     nexusRepositoryId: 'maven-releases', 
+			     packages: [[$class: 'MavenPackage', 
+					 mavenAssetList: [], 
+					 mavenCoordinate: [artifactId: 'tpAchatProject', groupId: 'com.esprit.examen', packaging: 'jar', version: '1.0']]], 
+			     tagName: 'backend-app'
                       }
                  }
         }

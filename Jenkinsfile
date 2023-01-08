@@ -75,7 +75,7 @@ pipeline {
 	 stage("Publish to Nexus") {
             steps {
                 script {
-                       nexusPublisher nexusInstanceId: 'maven-releases', nexusRepositoryId: '', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\']], mavenCoordinate: [artifactId: 'spring-boot-maven-plugin', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0']]]
+                       nexusPublisher nexusInstanceId: 'maven-releases', nexusRepositoryId: '', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\tpAchatProject-1.0.jar']], mavenCoordinate: [artifactId: 'spring-boot-maven-plugin', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0']]]
                        }
                    }
           }

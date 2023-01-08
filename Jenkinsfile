@@ -12,7 +12,7 @@ pipeline {
         NEXUS_URL = "192.168.1.90:8081"
         NEXUS_REPOSITORY = "maven-snapshots"
         NEXUS_CREDENTIAL_ID = "nexus"
-	    registry="mimo20222/edhri2023_docker_hub_repo"
+	registry="mimo20222/edhri2023_docker_hub_repo"
         registryCredential='docker-hub-id'
         imageName="webapp"
         dokerImage=''
@@ -78,7 +78,8 @@ pipeline {
                  script {
                  docker.withRegistry( '', registryCredential ) 
 				        {
-                          dockerImage.push()
+                          //dockerImage.push()
+			  sh 'docker push mimo20222/edhri2023_docker_hub_repo:webapp-1.0'
                         }
                 }
              }

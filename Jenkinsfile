@@ -76,7 +76,7 @@ pipeline {
          stage("Nexus Publisher") {
              steps{  
                  script {
-                     nexusPublisher nexusInstanceId: 'maven-releases',
+                     nexusPublisher nexusInstanceId: 'nexus',
 			     nexusRepositoryId: 'maven-releases', 
 			     packages: [[$class: 'MavenPackage', 
 					 mavenAssetList: [], 

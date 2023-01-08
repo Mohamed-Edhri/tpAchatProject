@@ -76,7 +76,7 @@ pipeline {
             steps {
                 script {
                        //nexusPublisher nexusInstanceId: 'maven-releases', nexusRepositoryId: '', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '\\target\\tpAchatProject-1.0.jar']], mavenCoordinate: [artifactId: 'spring-boot-maven-plugin', groupId: 'org.springframework.boot', packaging: 'jar', version: '1.0']]]
-                      nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-maven-plugin', classifier: '', file: '/target/tpAchatProject-1.0.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'org.springframework.boot', nexusUrl: '192.168.1.90:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '2.0'
+                      nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-maven-plugin', classifier: '', file: 'target/tpAchatProject-1.0.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'org.springframework.boot', nexusUrl: '192.168.1.90:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '2.0'
 		       }
                    }
           }

@@ -15,7 +15,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    build: ./webapp
+    build: mimo20222/edhri2023_docker_hub_repo:webapp-1.0
     restart: on-failure
     env_file: ./.env
     ports:

@@ -68,7 +68,8 @@ pipeline {
         stage("Docker Build") {
                        steps{
                          script {
-                            dockerImage = docker.build imageName
+                           // dockerImage = docker.build imageName
+		               dockerImage = docker.build registry + imageName
                        }
                  }
        }
@@ -79,6 +80,7 @@ pipeline {
                  docker.withRegistry( '', registryCredential ) 
 				        {
                           //dockerImage.push()
+                          sh 'docker tag imageName mimo20222/edhri2023_docker_hub_repo:webapp-1.0'
 			  sh 'docker push mimo20222/edhri2023_docker_hub_repo:webapp-1.0'
                         }
                 }

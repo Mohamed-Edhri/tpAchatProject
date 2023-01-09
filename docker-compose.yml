@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   mysqldb:
+    container_name: mydb
     image: mysql:5.7
     restart: unless-stopped
     env_file: ./.env
@@ -15,6 +16,7 @@ services:
   app:
     depends_on:
       - mysqldb
+    container_name: webapp
     image: mimo20222/edhri2023_docker_hub_repo:webapp-1.0
     restart: on-failure
     env_file: ./.env

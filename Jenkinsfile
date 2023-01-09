@@ -80,7 +80,7 @@ pipeline {
                  docker.withRegistry( '', registryCredential ) 
 				        {
                           //dockerImage.push()
-                          sh 'docker tag imageName mimo20222/edhri2023_docker_hub_repo:webapp-1.0'
+                          sh 'docker tag webapp mimo20222/edhri2023_docker_hub_repo:webapp-1.0'
 			  sh 'docker push mimo20222/edhri2023_docker_hub_repo:webapp-1.0'
                         }
                 }

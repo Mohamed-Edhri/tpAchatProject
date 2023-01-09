@@ -67,8 +67,8 @@ pipeline {
         stage("Docker Build") {
                        steps{
                          script {
-                           // dockerImage = docker.build imageName
-		               dockerImage = docker.build registry + imageName
+                             dockerImage = docker.build imageName
+		            //   dockerImage = docker.build registry + imageName
                        }
                  }
        }
